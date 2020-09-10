@@ -41,21 +41,28 @@ function getPlayerChoice() {
 
 }
 
-// function to play 5 rounds of the game and show a final score. 
+// function to play 5 rounds of the game and show a final score/declare winner. 
 function playRPS() {
     let playerScore = 0;
+    let computerScore = 0;
     for (let round = 0; round < 5; ++round){
-        if (playRound() == 'win') {
+        turn = playRound();
+        if (turn == 'win') {
             ++playerScore
-            console.log("Your score is " + playerScore)
+            console.log("The score is: player " + playerScore + ", computer " + computerScore)
+        } else if (turn == 'lose') {
+            ++computerScore
+            console.log("The score is: player " + playerScore + ", computer " + computerScore)
         } else {
-            console.log("Your score is " + playerScore)
+            console.log("The score is: player " + playerScore + ", computer " + computerScore)
         }
     }
-    if (playerScore >= 3) {
-        console.log("After 5 rounds, your score is: " + playerScore + ". YOU WIN!")
+    if (playerScore > computerScore) {
+        console.log("After 5 rounds, the score is: player " + playerScore + ", computer " + computerScore +  ". YOU WIN!")
+    } else if (playerScore < computerScore) {
+        console.log("After 5 rounds, the score is: player " + playerScore + ", computer " + computerScore + ". The computer won! :-(")
     } else {
-        console.log("After 5 rounds, your score is: " + playerScore + ". The computer won! :-(")
+        console.log("After 5 rounds, it's a TIE!")
     }
 }
 
