@@ -5,74 +5,41 @@
   <title>JK - Rock Paper Scissors</title>
 </head>
 <body>
-
-<script>
-// create a computerPlay() function to select Rock, Paper, Scissors
-let list = ['rock', 'paper', 'scissors'];
-function computerPlay() {
-    choice = list[Math.floor(Math.random()*3)]; 
-    return choice;
-}
-// play one round of Rock Paper Scissors and return a winner. 
-
-function playRound() {
-    let computerChoice = computerPlay();
-    let playerSelection = getPlayerChoice();
-    if (computerChoice === playerSelection) {
-        console.log("You both chose " + playerSelection + ", it's a tie!  Try again.")
-        return 'tie'
-    } else if ((playerSelection === 'rock' && computerChoice === 'scissors') || (playerSelection === 'paper' && computerChoice === 'rock') || (playerSelection === 'scissors' && computerChoice === 'paper')) {
-        console.log("You chose " + playerSelection + " vs. the computer's " + computerChoice + ".  YOU WIN!")
-        return 'win'
-    } else {
-        console.log("You chose " + playerSelection + " vs. the computer's " + computerChoice + ".  Better luck next time!")
-        return 'lose'
-    }
-}
-// get the player choice and make sure it's a valid one
-function getPlayerChoice() {
-    let playerSelection = prompt("Make your choice").toLowerCase();
-    if (list.includes(playerSelection)) {
-        return playerSelection;
-    } else {
-        alert("Try again! Must be rock, paper, or scissors")
-        return getPlayerChoice();
-    }
-
-}
-
-// function to play 5 rounds of the game and show a final score/declare winner. 
-function playRPS() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let round = 0; round < 5; ++round){
-        turn = playRound();
-        if (turn == 'win') {
-            ++playerScore
-            console.log("The score is: player " + playerScore + ", computer " + computerScore)
-        } else if (turn == 'lose') {
-            ++computerScore
-            console.log("The score is: player " + playerScore + ", computer " + computerScore)
-        } else {
-            console.log("The score is: player " + playerScore + ", computer " + computerScore)
-        }
-    }
-    if (playerScore > computerScore) {
-        console.log("After 5 rounds, the score is: player " + playerScore + ", computer " + computerScore +  ". YOU WIN!")
-    } else if (playerScore < computerScore) {
-        console.log("After 5 rounds, the score is: player " + playerScore + ", computer " + computerScore + ". The computer won! :-(")
-    } else {
-        console.log("After 5 rounds, it's a TIE!")
-    }
-}
-
-</script>
+<h1>Let's play Rock Paper Scissors!</h1>
+<p>Make your selection: </p><br />
+<button id = "rock">Rock</button>
+<button id = "paper">Paper</button>
+<button id = "scissors">Scissors</button> <br />
+<button id = "reset">Reset Scores</button> <br />
+<div id= "message"></div><br />
+<div id= "score"></div>
 
 </body>
+<script src = "Scripts/scripts.js"></script>
 </html>
-
-
 <!--
+    New requirements for front end RPS game: 
+    Go back to your “Rock Paper Scissors” game from a previous lesson and give it a 
+    simple UI so that the player can play the game by clicking on buttons rather 
+    than typing their answer in a prompt.
+
+        X. Copy your original code into a new file so you don’t lose it.
+        X. For now, remove the logic that plays exactly five rounds.
+        X. Create three buttons, one for each selection. Add an event listener to 
+           the buttons that calls your playRound function with the correct playerSelection 
+           every time a button is clicked. (you can keep the console.logs for this step)
+        X. Add a div for displaying results and change all of your console.logs into DOM 
+           methods.
+        X. Display the running score, and announce a winner of the game once one player 
+           reaches 5 points.
+        X. You will likely have to refactor (rework/rewrite) your original code to make 
+           it work for this. That’s OK! Reworking old code is an important part of the 
+           programmer’s life.
+        X. Don’t forget to go back and add your new version to the original 
+           Rock Paper Scissors Project!
+    
+    
+    Original requirements for the JS functionality to play RPS in console. 
     Requirements: 
     1. Start a new Git repo for your project.
     
